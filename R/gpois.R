@@ -23,7 +23,6 @@
 #'    \item{Est}{A vector with the values of Small Area mean Estimates using Hierarchical Bayesian method}
 #'    \item{refVar}{Estimated random effect variances}
 #'    \item{coefficient}{A dataframe contains the estimated model coefficient}
-#'    \item{alpha}{Parameter dispersion of Generalized Poisson distribution}
 #'    \item{plot}{Trace, Density, Autocorrelation Function Plot of MCMC samples}
 #'
 #'@examples
@@ -35,7 +34,6 @@
 #' result$Est           # Small Area mean estimates
 #' result$refVar        # Estimated random effect variances
 #' result$coefficient   # Estimated model coefficient
-#' result$alpha         # Paramter of dispersion
 #'
 #' # Load library 'coda' to execute the plot
 #' # autocorr.plot(result$plot[[3]])  # Generate ACF Plot
@@ -48,7 +46,7 @@
 GPois <- function(formula,iter.update=3, iter.mcmc=2000,
                   coef, var.coef, thin = 1, burn.in =1000, tau.u = 1, data){
 
-  result <- list(Est = NA, refVar = NA, coefficient = NA, alpha = NA, plot= NA)
+  result <- list(Est = NA, refVar = NA, coefficient = NA, plot= NA)
 
   formuladata <- model.frame(formula,data,na.action=NULL)
   if (any(is.na(formuladata[,-1])))
@@ -267,7 +265,6 @@ GPois <- function(formula,iter.update=3, iter.mcmc=2000,
 
   result$Est         = Estimation
   result$refVar      = a.var
-  result$alpha       = alpha
   result$coefficient = beta
   result$plot        = list(graphics.off() ,par(mar=c(2,2,2,2)),
                             autocorr.plot(result_mcmc,col="brown2",lwd=2),

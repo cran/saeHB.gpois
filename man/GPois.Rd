@@ -40,7 +40,6 @@ This function returns a list of the following objects:
    \item{Est}{A vector with the values of Small Area mean Estimates using Hierarchical Bayesian method}
    \item{refVar}{Estimated random effect variances}
    \item{coefficient}{A dataframe contains the estimated model coefficient}
-   \item{alpha}{Parameter dispersion of Generalized Poisson distribution}
    \item{plot}{Trace, Density, Autocorrelation Function Plot of MCMC samples}
 }
 \description{
@@ -55,7 +54,6 @@ result <- GPois(y ~ x1 + x2, data = dataGPois)
 result$Est           # Small Area mean estimates
 result$refVar        # Estimated random effect variances
 result$coefficient   # Estimated model coefficient
-result$alpha         # Paramter of dispersion
 
 # Load library 'coda' to execute the plot
 # autocorr.plot(result$plot[[3]])  # Generate ACF Plot
